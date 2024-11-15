@@ -10,5 +10,5 @@ r1.question("文字列を入力してください：", (line: string) => {
   // 文字列が入力されるとここが実行される
   // console.log(`${line}が入力されました`);
   console.log(result);
-  r1.close;
+  r1.close();
 });
