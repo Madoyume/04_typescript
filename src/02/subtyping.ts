@@ -38,15 +38,15 @@ type HumanFamily = {
 };
 
 // 余剰プロパティの型エラー
-type User = { name: string; age: number };
-const u: User = {
-  name: "T",
-  age: 29,
-  // telnumber: "09012345678",
-};
-const u2 = {
-  name: "K",
-  age: 29,
-  telnumber: "09012345678",
-};
-const u3: User = u2;
+// type User = { name: string; age: number };
+// const u: User = {
+//   name: "T",
+//   age: 29,
+//   // telnumber: "09012345678",
+// };
+// const u2 = {
+//   name: "K",
+//   age: 29,
+//   telnumber: "09012345678",
+// };
+// const u3: User = u2;
