@@ -20,10 +20,10 @@ const obj2: FooBar = obj;
 type Animal = {
   age: number;
 };
-type Human = {
-  age: number;
-  name: string;
-};
+// type Human = {
+//   age: number;
+//   name: string;
+// };
 type AnimalFamily = {
   familyName: string;
   mother: Animal;
