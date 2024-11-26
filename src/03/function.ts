@@ -66,3 +66,50 @@ const sum = (...args: number[]): number => {
 console.log(sum(1, 10, 100));
 console.log(sum(123, 456));
 console.log(sum());
+
+// スプレッド構文
+const nums = [1, 2, 3, 4, 5];
+console.log(sum(...nums));
+// 配列が持つ値を、すべて順番に引数に渡す
+
+const sum3 = (a: number, b: number, c: number) => a + b + c;
+const nums2: [number, number, number] = [1, 2, 3];
+console.log(sum3(...nums2));
+
+// オプショナル引数を宣言
+// const toLowerOrUpper = (str: string, upper?: boolean = false): string => {
+const toLowerOrUpper = (str: string, upper: boolean = false): string => {
+  if (upper) {
+    return str.toUpperCase();
+  } else {
+    return str.toLowerCase();
+  }
+};
+console.log(toLowerOrUpper("Hello"));
+console.log(toLowerOrUpper("Hello", false));
+console.log(toLowerOrUpper("Hello", true));
+console.log(toLowerOrUpper("Hello", undefined));
+
+// コールバック関数
+type U01 = { name: string; age: number };
+const u01s: U01[] = [
+  { name: "Tea", age: 29 },
+  { name: "John Smith", age: 15 },
+];
+const names = u01s.map((u: U01): string => u.name);
+console.log(names);
+
+// 20歳以上のユーザーだけの配列
+const adultUsers = users.filter((u: U01) => u.age >= 20);
+console.log(adultUsers);
+// すべてのユーザーが20歳以上ならtrue
+const allAdult = users.every((u: U01) => u.age >= 20);
+console.log(allAdult);
+// 60歳以上のユーザーが1人でもいればtrue
+const seniorExists = users.some((u: U01) => u.age >= 60);
+console.log(seniorExists);
+// 名前がJohnで始まるユーザーを探して返す
+const john = users.find((u: U01) => u.name.startsWith("John"));
+
+// 関数型
+const xReport = (num: number): string => "x".repeat(num);
