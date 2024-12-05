@@ -100,16 +100,52 @@ const names = u01s.map((u: U01): string => u.name);
 console.log(names);
 
 // 20歳以上のユーザーだけの配列
-const adultUsers = users.filter((u: U01) => u.age >= 20);
+const adultUsers = u01s.filter((u: U01) => u.age >= 20);
 console.log(adultUsers);
 // すべてのユーザーが20歳以上ならtrue
-const allAdult = users.every((u: U01) => u.age >= 20);
+const allAdult = u01s.every((u: U01) => u.age >= 20);
 console.log(allAdult);
 // 60歳以上のユーザーが1人でもいればtrue
-const seniorExists = users.some((u: U01) => u.age >= 60);
+const seniorExists = u01s.some((u: U01) => u.age >= 60);
 console.log(seniorExists);
 // 名前がJohnで始まるユーザーを探して返す
-const john = users.find((u: U01) => u.name.startsWith("John"));
+const john = u01s.find((u: U01) => u.name.startsWith("John"));
 
 // 関数型
 const xReport = (num: number): string => "x".repeat(num);
+console.log(xReport(12));
+
+type F = (repeatNum: number) => string;
+const xReport2: F = (num: number): string => "x".repeat(num);
+type F2 = (arg: string, arg2: string) => boolean;
+// const fun: F2 = (num: number): void => console.log(num);
+
+// コールシグネチャによる関数型
+type MyFunc = {
+  isUsed?: boolean;
+  (arg: number): void;
+};
+const double: MyFunc = (arg: number): string => {
+  console.log(arg * 2);
+  return "s";
+};
+// doubleはisUsedプロパティを持つ
+double.isUsed = true;
+console.log(double.isUsed);
+// doubleは関数として呼び出せる
+double(1000);
+
+// 部分型関係
+type hasName = {
+  name: string;
+};
+type hasNameAndAge = {
+  name: string;
+  age: number;
+};
+const fromAge = (age: number): hasNameAndAge => ({
+  name: "John Smith",
+  age,
+});
+const a: (age: number) => hasName = fromAge;
+const o: hasName = a(100);
