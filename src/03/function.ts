@@ -149,3 +149,57 @@ const fromAge = (age: number): hasNameAndAge => ({
 });
 const a: (age: number) => hasName = fromAge;
 const o: hasName = a(100);
+
+const showName = (obj: hasName) => {
+  console.log(obj.name);
+};
+const g: (obj: hasNameAndAge) => void = showName;
+g({
+  name: "Taka",
+  age: 30,
+});
+
+// 引数の数による部分型関係
+type UnaryFunc = (arg: number) => number;
+type BinaryFunc = (left: number, right: number) => number;
+
+const bai: UnaryFunc = (arg) => arg * 2;
+const add: BinaryFunc = (left: number, right: number) => left + right;
+
+// UnaryFuncをBinaryFuncとして扱うことが出来る
+const bin: BinaryFunc = bai;
+console.log(bin(10, 100));
+
+// ジェネリクスを用いた関数
+// function repeat<T>(element: T, length: number): T[] {
+//   const result: T[] = [];
+//   for (let i = 0; i < length; i++) {
+//     result.push(element);
+//   }
+//   return result;
+// }
+// アロー関数の場合はいきなりジェネリクスを入れる
+const repeat = <T>(element: T, length: number): T[] => {
+  const result: T[] = [];
+  for (let i = 0; i < length; i++) {
+    result.push(element);
+  }
+  return result;
+};
+// ["a","a","a","a","a"]
+console.log(repeat<string>("a", 5));
+// [123, 123, 123]
+console.log(repeat<number>(123, 3));
+
+// 関数の型引数の省略
+function repeatA<T>(element: T, length: number): T[] {
+  const result: T[] = [];
+  for (let i = 0; i < length; i++) {
+    result.push(element);
+  }
+  return result;
+}
+const resultA = repeat("a", 5); // 引数から型推論
+
+// 変数のスコープ
+// const arr: number[] = [1, 2, 3, 4, 5];
