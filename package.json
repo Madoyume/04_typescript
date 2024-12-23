@@ -11,10 +11,12 @@
   "description": "",
   "type": "module",
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
     "typescript": "^5.6.3"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "fastify": "^5.2.0"
   }
 }
